@@ -1,11 +1,12 @@
 import streamlit as st
 from streamlit_chat import message
 import requests
+from st_pages import add_page_title
+from archmed.summarization_and_qna_transformers import *
 
 st.set_page_config(page_title="ArchMed ChatBot", page_icon=":robot:")
-
-
-st.header("ArchMed ChatBot")
+# model = getModel_QNA()
+add_page_title()
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []
