@@ -18,6 +18,7 @@ def get_text(pdf):
 
 st.header("Multimodal Content Generation from the Paper")
 st.markdown("Using GCP and Google slides to create a automatic presentation")
+
 if st.button("Generate Presentation"):
     if "text" not in st.session_state.keys():
         get_text(pdf=st.session_state["pdf_url"])
