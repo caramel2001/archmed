@@ -26,6 +26,7 @@ show_pages(
         Page("streamlit/chatbotpage.py", "ArchMed ChatBot", "🤖"),
         Page("streamlit/analyser.py", "Analyser", "🧐"),
         Page("streamlit/keyword_wordcloud.py", "Keywords", "🧐"),
+        Page("streamlit/presentation.py", "Presentation", "🧐"),
     ]
 )
 
@@ -82,18 +83,6 @@ for i, res in enumerate(result):
 col1, col2 = st.columns(2)
 
 
-def displayPDF(file):
-    download_pdf(pdf_url=file, dir_path="data", filename="temp.pdf")
-    # Opening file from file path. this is used to open the file from a website rather than local
-    # with open("data/temp.pdf", "rb") as f:
-    #     base64_pdf = f.read()
-
-    # # pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="950" type="application/pdf"></iframe>'
-
-    # # Displaying File
-    # st.write(base64_pdf)
-
-
 display = False
 with col1:
     url = st.text_input("The URL link")
@@ -103,7 +92,8 @@ with col2:
     if st.button("Analyse") and url is not None:
         display = True
 if display == True:
-    displayPDF(f"{url}")
+    st.session_state["pdf_url"] = url
+    print(st.session_state["pdf_url"])
     switch_page("Analyser")
 
 url = "https://docs.google.com/presentation/d/1EW8JearggoLRPXN6qiPvHPujHsrVANaHTgPBlgf2cmE/edit#slide=id.SLIDES_API1686381278_0"

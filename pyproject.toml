@@ -30,6 +30,10 @@ streamlit-extras = "^0.2.6"
 wordcloud = "^1.8.2.2"
 en-core-sci-md = {path = "/Users/pratham/Downloads/en_core_sci_md-0.5.1.tar.gz"}
 webdriver-manager = "^3.8.5"
+google-api-python-client = "^2.79.0"
+google-auth-oauthlib = "^1.0.0"
+pypdf2 = "^3.0.1"
+boto3 = "^1.26.79"
 
 
 [tool.poetry.group.dev.dependencies]
