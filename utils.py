@@ -11,6 +11,8 @@ load_dotenv(ROOT_DIR.joinpath(".env"))
 settings = {
     "SCOPUS": getenv("SCOPUS"),
     "IEEE": getenv("IEEE"),
+    "AWS_ID": getenv("AWS_ID"),
+    "AWS_SECRET": getenv("AWS_SECRET"),
 }
 
 import base64

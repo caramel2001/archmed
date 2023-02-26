@@ -25,22 +25,22 @@ def getModelSummarizer(link, dir):
     return tokenizer, model
 
 
-def generateSummary(model, tokenizer, txt):
+def generateSummary(model, tokenizer, txt, length):
     """Helper function"""
     inputs = tokenizer.encode_plus(txt, return_tensors="pt", truncation=True)
     summary_ids = model.generate(
-        inputs["input_ids"], num_beams=4, max_length=70, early_stopping=True
+        inputs["input_ids"], num_beams=4, max_length=length, early_stopping=True
     )
     summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
     return summary
 
 
-def getSummary(intro_txt, dir):
+def getSummary(intro_txt, dir, length=70):
     """CALL THIS ONE TO GET SUMMARY OF ABSTRACT"""
 
     link = "PeterBanning71/t5-small-finetuned-bioMedv1"
     tokenizer, model = getModelSummarizer(link, dir)
-    summary = generateSummary(model, tokenizer, intro_txt)
+    summary = generateSummary(model, tokenizer, intro_txt, length=length)
     return summary
 
 

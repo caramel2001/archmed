@@ -1,5 +1,5 @@
 import re
-from string import punctuation
+from PyPDF2 import PdfReader
 import fitz
 import os
 import requests
@@ -92,3 +92,16 @@ def get_exception_url(url: str, exception: str):
     if exception == "www.sciencedirect.com":
         pdf_url = url + "/pdfft"
     return pdf_url
+
+
+def get_images(pdf):
+    reader = PdfReader(pdf)
+    all_images = []
+
+    for page in reader.pages:
+        try:
+            for image in page.images:
+                all_images.append(image.data)
+        except:
+            continue
+    return all_images
